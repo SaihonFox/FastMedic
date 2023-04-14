@@ -17,6 +17,6 @@ public class CardCreatingActivity extends AppCompatActivity {
 		Bundle bundle = getIntent().getExtras();
 		
 		TextView skip = findViewById(R.id.skipTextView_cc);
-		skip.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), EmailCodeActivity.class)));
+		skip.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), AnalysesActivity.class)));
 	}
 }

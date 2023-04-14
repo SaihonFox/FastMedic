@@ -2,6 +2,7 @@ package com.polus_plus.fast_medic.Requests;
 
 import com.polus_plus.fast_medic.Requests.APIs.Catalog.Catalog;
 import com.polus_plus.fast_medic.Requests.APIs.Messages;
+import com.polus_plus.fast_medic.Requests.APIs.Token;
 import com.polus_plus.fast_medic.Requests.APIs.User.SendCode;
 import com.polus_plus.fast_medic.Requests.APIs.UserProfile.CreateProfile;
 import com.polus_plus.fast_medic.Requests.APIs.News.News;
@@ -23,7 +24,7 @@ public interface JSONPlaceHolderAPI {
 	Call<SendCode> sendCode(@Header("email") String email);
 	
 	@POST("/api/signin")
-	int signin(@Header("email") String email, @Header("code") String code);
+	Call<Token> signin(@Header("email") String email, @Header("code") String code);
 	
 	//--------------------------------------------------------------------------
 	

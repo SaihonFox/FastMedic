@@ -19,4 +19,8 @@ public class RetrofitAPI {
 					.build();
 		return retrofit;
 	}
+	
+	public static JSONPlaceHolderAPI api() {
+		return instance().create(JSONPlaceHolderAPI.class);
+	}
 }
