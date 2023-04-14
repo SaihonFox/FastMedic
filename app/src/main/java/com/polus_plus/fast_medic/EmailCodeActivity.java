@@ -21,7 +21,7 @@ public class EmailCodeActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_email_code);
 		
-		TextView tv = findViewById(R.id.enterCodeFromEmailTextView_ec);
+		TextView tv = new TextView(this);
 		
 		Retrofit retrofit = RetrofitAPI.instance();
 		
