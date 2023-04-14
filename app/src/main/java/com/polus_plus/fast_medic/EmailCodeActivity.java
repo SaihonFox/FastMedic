@@ -6,15 +6,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.polus_plus.fast_medic.Requests.JSONPlaceHolderAPI;
-import com.polus_plus.fast_medic.Requests.Post;
+import com.polus_plus.fast_medic.Requests.RetrofitAPI;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class EmailCodeActivity extends AppCompatActivity {
 	
@@ -25,44 +19,71 @@ public class EmailCodeActivity extends AppCompatActivity {
 		
 		TextView tv = findViewById(R.id.textView2);
 		
-		Retrofit retrofit = new Retrofit.Builder()
-				.baseUrl("https://medic.madskill.ru")
-				.addConverterFactory(GsonConverterFactory.create())
-				.build();
+		Retrofit retrofit = RetrofitAPI.instance();
 		
 		JSONPlaceHolderAPI jsonPlaceHolderAPI = retrofit.create(JSONPlaceHolderAPI.class);
 		
-		Call<List<Post>> call = jsonPlaceHolderAPI.getCatalog();
+		/*Call<List<Orders>> ordersCall = jsonPlaceHolderAPI.getOrders();
 		
-		call.enqueue(new Callback<List<Post>>() {
+		ordersCall.enqueue(new Callback<List<Orders>>() {
 			@Override
-			public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+			public void onResponse(Call<List<Orders>> call, Response<List<Orders>> response) {
 				if(!response.isSuccessful()) {
-					tv.setText("Code: " + response.code());
+					try{tv.setText("Code: " + response.code() + " " + response.errorBody().string());}
+					catch (Exception e) {tv.setText(e.getLocalizedMessage());}
 					return;
 				}
 				
-				List<Post> posts = response.body();
+				List<Orders> ordersPosts = response.body();
+				ordersPosts.sort(Comparator.comparingInt(Orders::getId));
 				
-				for(Post post : posts) {
-					String content = "";
-					content += "ID: " + post.getId() + "\n";
-					content += "Name: " + post.getName() + "\n";
-					content += "Description: " + post.getDescription() + "\n";
-					content += "Price: " + post.getPrice() + "\n";
-					content += "Category: " + post.getCategory() + "\n";
-					content += "Time result: " + post.getTime_result() + "\n";
-					content += "Preparation: " + post.getPreparation() + "\n";
-					content += "Bio: " + post.getBio() + "\n";
+				String content = "";
+				for(Orders orders : ordersPosts) {
+					content += "ID: " + orders.getId() + "\n";
+					content += "Order ID: " + orders.getOrder_id() + "\n";
+					content += "Catalog ID: " + orders.getCatalog_id() + "\n";
+					content += "Patient ID: " + orders.getPatient_id() + "\n";
+					content += "Created at: " + orders.getCreated_at() + "\n";
+					content += "Created at: " + orders.getCreated_at() + "\n";
+					content += "Updated at: " + orders.getUpdated_at() + "\n";
+					content += "Price at: " + orders.getPrice() + "\n";
+					content += "-----Patient-----" + "\n";
+					content += "PatientID: " + orders.getPatient().getId() + "\n";
+					content += "PatientName: " + orders.getPatient().getName() + "\n";
+					content += "PatientCreated at: " + orders.getPatient().getCreated_at() + "\n";
+					content += "PatientUpdated at: " + orders.getPatient().getUpdated_at() + "\n";
+					content += "-----Order-----" + "\n";
+					content += "OrderID: " + orders.getOrder().getId() + "\n";
+					content += "OrderAddress: " + orders.getOrder().getAddress() + "\n";
+					content += "OrderCreated at: " + orders.getOrder().getCreated_at() + "\n";
+					content += "OrderUpdated at: " + orders.getOrder().getUpdated_at() + "\n";
+					content += "OrderDateTime: " + orders.getOrder().getDate_time() + "\n";
+					content += "OrderPhone: " + orders.getOrder().getPhone() + "\n";
+					content += "OrderComment: " + orders.getOrder().getComment() + "\n";
+					content += "OrderAudioComment: " + orders.getOrder().getAudio_comment() + "\n";
+					content += "-----Item-----" + "\n";
+					content += "ItemID: " + orders.getItem().getId() + "\n";
+					content += "ItemName: " + orders.getItem().getName() + "\n";
+					content += "ItemCategory: " + orders.getItem().getCategory() + "\n";
+					content += "ItemPrice: " + orders.getItem().getPrice() + "\n";
+					content += "ItemBio: " + orders.getItem().getBio() + "\n";
+					content += "ItemUpdated at: " + orders.getItem().getUpdated_at() + "\n";
+					content += "ItemPreparation: " + orders.getItem().getPreparation() + "\n";
+					content += "ItemTime result: " + orders.getItem().getTime_result() + "\n";
+					content += "ItemCreated at: " + orders.getItem().getCreated_at() + "\n";
+					content += "ItemDescription: " + orders.getItem().getDescription() + "\n\n\n";
 					
 					tv.append(content);
+					content = "";
 				}
 			}
 			
 			@Override
-			public void onFailure(Call<List<Post>> call, Throwable t) {
+			public void onFailure(Call<List<Orders>> call, Throwable t) {
 				tv.setText(t.getMessage());
 			}
-		});
+		});*/
+		
+		
 	}
 }

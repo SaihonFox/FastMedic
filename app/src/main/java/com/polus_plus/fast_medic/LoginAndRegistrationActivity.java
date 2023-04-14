@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -31,9 +32,11 @@ public class LoginAndRegistrationActivity extends AppCompatActivity {
 			
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				String regex = "^(.+)@(.+)$";
+				String regex = "/^\\S+@\\S+\\.\\S+$/";
 				String text = editText.getText().toString();
-				if(text.matches(regex)) {
+				
+				
+				if(Patterns.EMAIL_ADDRESS.matcher(text).matches()) {
 					button.setBackgroundResource(R.drawable.rounded_button_enabled);
 					buttonEnabled = true;
 				}
@@ -46,5 +49,10 @@ public class LoginAndRegistrationActivity extends AppCompatActivity {
 			@Override
 			public void afterTextChanged(Editable s) {}
 		});
+		
+	}
+	
+	public void sendEmailCode(String emailAddress) {
+	
 	}
 }

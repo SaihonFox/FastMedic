@@ -59,7 +59,7 @@ public class OnboardActivity extends AppCompatActivity {
 		
 		skipTextView.setOnClickListener(view -> {
 			if(isLastPage) {
-				startActivity(new Intent().setClass(this, PasswordCreatingActivity.class));
+				startActivity(new Intent().setClass(this, LoginAndRegistrationActivity.class));
 				finish();
 			} else
 				viewPager.setCurrentItem(2, true);

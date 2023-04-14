@@ -1,7 +1,7 @@
-package com.polus_plus.fast_medic.Requests;
+package com.polus_plus.fast_medic.Requests.APIs.Catalog;
 
-public class Post {
-	long id;
+public class Catalog {
+	int id;
 	String name;
 	String description;
 	String price;
@@ -10,10 +10,10 @@ public class Post {
 	String preparation;
 	String bio;
 	
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	
