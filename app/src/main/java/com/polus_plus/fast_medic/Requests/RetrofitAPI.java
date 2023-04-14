@@ -7,9 +7,6 @@ public class RetrofitAPI {
 	public static Retrofit retrofit;
 	public static String url = "https://medic.madskill.ru";
 	
-	public static String token;
-	public static boolean isLoggedIn;
-	
 	public RetrofitAPI() {
 	
 	}
