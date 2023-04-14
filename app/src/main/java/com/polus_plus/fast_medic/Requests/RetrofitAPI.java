@@ -5,12 +5,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitAPI {
 	public static Retrofit retrofit;
+	public static String url = "https://medic.madskill.ru";
+	
 	public static String token;
 	
 	public static Retrofit instance() {
 		if(retrofit == null) {
 			retrofit = new Retrofit.Builder()
-					.baseUrl("https://medic.madskill.ru")
+					.baseUrl(url)
 					.addConverterFactory(GsonConverterFactory.create())
 					.build();
 		}
