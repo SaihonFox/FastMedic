@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fast Medic</string>
+    <string name="skip">Пропустить</string>
+    <string name="analyses">Анализы</string>
+    <string name="expressSbor">Экспресс сбор и получение проб</string>
+    <string name="create_password">Создайте пароль</string>
+    <string name="forYourPersonalSave">Для защиты ваших персональных данных</string>
+    <string name="card_creating">Создание карты пациента</string>
+    <string name="without_card_cc">Без карты пациента вы не сможете заказать анализы.</string>
+    <string name="create">Создать</string>
+    <string name="in_cards_cc">В картах пациентов будут храниться результаты анализов вас и ваших близких.</string>
+    <string name="login_with_yandex">Войти с Яндекс</string>
+    <string name="login_with">Или войдите с помощью</string>
+    <string name="next">Далее</string>
+    <string name="login_for">Войдите, чтобы пользоваться функциями приложения</string>
+</resources>

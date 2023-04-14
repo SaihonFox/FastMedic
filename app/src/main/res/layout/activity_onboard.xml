@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FEFEFE"
+    tools:context=".OnboardActivity">
+
+    <view
+        android:id="@+id/viewPager_Ob"
+        class="androidx.viewpager.widget.ViewPager"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="445dp"
+        android:contentDescription="@string/none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:id="@+id/viewGroup_Ob"
+        android:layout_width="wrap_content"
+        android:layout_height="93dp"
+        android:layout_marginTop="229dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/titleTextView_Ob"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:text="@string/analyses"
+        android:textColor="#00B712"
+        android:textIsSelectable="false"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/viewGroup_Ob"
+        app:layout_constraintEnd_toEndOf="@id/viewGroup_Ob"
+        app:layout_constraintStart_toStartOf="@id/viewGroup_Ob"
+        app:layout_constraintTop_toTopOf="@id/viewGroup_Ob"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/descTextView_Ob"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="53dp"
+        android:gravity="center"
+        android:text="@string/expressSbor"
+        android:textIsSelectable="false"
+        app:layout_constraintBottom_toBottomOf="@id/viewGroup_Ob"
+        app:layout_constraintEnd_toEndOf="@id/viewGroup_Ob"
+        app:layout_constraintStart_toStartOf="@id/viewGroup_Ob"
+        app:layout_constraintTop_toTopOf="@id/viewGroup_Ob"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/skipTextView_Ob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/skip"
+        android:textColor="#57A9FF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="TextContrastCheck,VisualLintLocaleText" />
+
+    <ImageView
+        android:id="@+id/iconImageView_Ob"
+        android:layout_width="167.04dp"
+        android:layout_height="163.11dp"
+        android:layout_marginStart="208dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/lar_icon"
+        tools:ignore="ImageContrastCheck" />
+
+    <View
+        android:id="@+id/viewDotsGroup_Ob"
+        android:layout_width="58dp"
+        android:layout_height="14dp"
+        android:layout_marginTop="362dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/dot1ImageView_Ob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/none"
+        app:layout_constraintBottom_toBottomOf="@id/viewDotsGroup_Ob"
+        app:layout_constraintEnd_toEndOf="@id/viewDotsGroup_Ob"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/viewDotsGroup_Ob"
+        app:layout_constraintTop_toTopOf="@id/viewDotsGroup_Ob"
+        app:srcCompat="@drawable/blue_ellipse_filled"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/dot2ImageView_Ob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/none"
+        app:layout_constraintBottom_toBottomOf="@id/viewDotsGroup_Ob"
+        app:layout_constraintEnd_toEndOf="@id/viewDotsGroup_Ob"
+        app:layout_constraintStart_toStartOf="@id/viewDotsGroup_Ob"
+        app:layout_constraintTop_toTopOf="@id/viewDotsGroup_Ob"
+        app:srcCompat="@drawable/blue_ellipse_outlined"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/dot3ImageView_Ob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/none"
+        app:layout_constraintBottom_toBottomOf="@id/viewDotsGroup_Ob"
+        app:layout_constraintEnd_toEndOf="@id/viewDotsGroup_Ob"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/viewDotsGroup_Ob"
+        app:layout_constraintTop_toTopOf="@id/viewDotsGroup_Ob"
+        app:srcCompat="@drawable/blue_ellipse_outlined"
+        tools:ignore="ImageContrastCheck" />
+</androidx.constraintlayout.widget.ConstraintLayout>

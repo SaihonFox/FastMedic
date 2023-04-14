@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CardCreatingActivity">
+
+    <TextView
+        android:id="@+id/skipTextView_cc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/skip"
+        android:textColor="#1A6FEE"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/cardCreatingTextView_cc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/card_creating"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/skipTextView_cc"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/text1TextView_cc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/without_card_cc"
+        android:textColor="#939396"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardCreatingTextView_cc"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/text2TextView_cc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/in_cards_cc"
+        android:textColor="#939396"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text1TextView_cc"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/createButton_cc"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="588dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="124dp"
+        android:background="@drawable/rounded_button_disabled"
+        android:text="@string/create"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintButtonSize,TextContrastCheck" />
+
+    <View
+        android:id="@+id/inputsView_cc"
+        android:layout_width="0dp"
+        android:layout_height="336dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="204dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/nameEditText_cc"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/cc_input_rounded"
+        android:ems="10"
+        android:hint="Имя"
+        android:inputType="textPersonName"
+        android:paddingLeft="14dp"
+        android:textColorHint="#939396"
+        app:layout_constraintBottom_toBottomOf="@id/inputsView_cc"
+        app:layout_constraintEnd_toEndOf="@id/inputsView_cc"
+        app:layout_constraintStart_toStartOf="@id/inputsView_cc"
+        app:layout_constraintTop_toTopOf="@id/inputsView_cc"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="LabelFor,VisualLintTextFieldSize" />
+
+    <EditText
+        android:id="@+id/lastnameEditText_cc"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/cc_input_rounded"
+        android:ems="10"
+        android:hint="Отчество"
+        android:inputType="textPersonName"
+        android:paddingLeft="14dp"
+        android:textColorHint="#939396"
+        app:layout_constraintBottom_toBottomOf="@id/inputsView_cc"
+        app:layout_constraintEnd_toEndOf="@id/inputsView_cc"
+        app:layout_constraintStart_toStartOf="@id/inputsView_cc"
+        app:layout_constraintTop_toTopOf="@id/inputsView_cc"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="LabelFor,VisualLintTextFieldSize" />
+
+    <EditText
+        android:id="@+id/patronymicEditText_cc"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="144dp"
+        android:background="@drawable/cc_input_rounded"
+        android:ems="10"
+        android:hint="Фамилия"
+        android:inputType="textPersonName"
+        android:paddingLeft="14dp"
+        android:textColorHint="#939396"
+        app:layout_constraintBottom_toBottomOf="@id/inputsView_cc"
+        app:layout_constraintEnd_toEndOf="@id/inputsView_cc"
+        app:layout_constraintStart_toStartOf="@id/inputsView_cc"
+        app:layout_constraintTop_toTopOf="@id/inputsView_cc"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="LabelFor,VisualLintTextFieldSize" />
+
+    <EditText
+        android:id="@+id/birthdayEditText_cc"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="216dp"
+        android:background="@drawable/cc_input_rounded"
+        android:ems="10"
+        android:hint="Дата рождения"
+        android:inputType="date"
+        android:paddingLeft="14dp"
+        android:textColorHint="#939396"
+        app:layout_constraintBottom_toBottomOf="@+id/inputsView_cc"
+        app:layout_constraintEnd_toEndOf="@+id/inputsView_cc"
+        app:layout_constraintStart_toStartOf="@id/inputsView_cc"
+        app:layout_constraintTop_toTopOf="@+id/inputsView_cc"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
