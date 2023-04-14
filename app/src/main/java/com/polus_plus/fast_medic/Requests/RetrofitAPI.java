@@ -5,6 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitAPI {
 	public static Retrofit retrofit;
+	public static String token;
 	
 	public static Retrofit instance() {
 		if(retrofit == null) {
