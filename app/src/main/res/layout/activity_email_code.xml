@@ -74,6 +74,7 @@
         android:contentDescription="@string/none" />
 
     <EditText
+        android:maxLength="1"
         android:id="@+id/number1EditText_ec"
         android:layout_width="48dp"
         android:layout_height="48dp"
@@ -95,6 +96,7 @@
         tools:ignore="LabelFor,SpeakableTextPresentCheck" />
 
     <EditText
+        android:maxLength="1"
         android:id="@+id/number2EditText_ec"
         android:layout_width="48dp"
         android:layout_height="48dp"
@@ -116,6 +118,7 @@
         android:importantForAutofill="no" />
 
     <EditText
+        android:maxLength="1"
         android:id="@+id/number3EditText_ec"
         android:layout_width="48dp"
         android:layout_height="48dp"
@@ -137,6 +140,7 @@
         tools:ignore="LabelFor,SpeakableTextPresentCheck" />
 
     <EditText
+        android:maxLength="1"
         android:id="@+id/number4EditText_ec"
         android:layout_width="48dp"
         android:layout_height="48dp"

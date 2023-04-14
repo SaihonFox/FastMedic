@@ -2,11 +2,19 @@ package com.polus_plus.fast_medic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.polus_plus.fast_medic.Requests.APIs.User.SendCode;
 import com.polus_plus.fast_medic.Requests.JSONPlaceHolderAPI;
@@ -26,6 +34,36 @@ public class EmailCodeActivity extends AppCompatActivity {
 		
 		View button = findViewById(R.id.backButton_ec);
 		button.setOnClickListener(view -> startActivity(new Intent(this, PasswordCreatingActivity.class)));
+		
+		EditText editText1 = findViewById(R.id.number1EditText_ec);
+		EditText editText2 = findViewById(R.id.number2EditText_ec);
+		EditText editText3 = findViewById(R.id.number3EditText_ec);
+		EditText editText4 = findViewById(R.id.number4EditText_ec);
+		
+		selectNext(editText1, editText2);
+		selectNext(editText2, editText3);
+		selectNext(editText3, editText4);
+		
+		editText4.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				if(editText4.getText().toString().length() == 1) {
+					editText4.clearFocus();
+					InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					imm.hideSoftInputFromWindow(editText4.getWindowToken(), 0);
+				}
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {}
+		});
+		
+		selectPrev(editText2, editText1);
+		selectPrev(editText3, editText2);
+		selectPrev(editText4, editText3);
 		
 		TextView tv = new TextView(this);
 		
@@ -114,6 +152,34 @@ public class EmailCodeActivity extends AppCompatActivity {
 			public void onFailure(Call<SendCode> call, Throwable t) {
 				tv.setText(t.getMessage());
 			}
+		});
+	}
+	
+	public void selectNext(EditText editText1, EditText editText2) {
+		editText1.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				if(s.length() == 1)
+					editText2.requestFocus();
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {}
+		});
+	}
+	
+	public void selectPrev(EditText editText1, EditText editText2) {
+		editText1.setOnKeyListener((view, keyCode, event) -> {
+			if(editText1.getText().toString().length() != 0)
+				return super.onKeyUp(keyCode, event);
+			
+			if(editText1.isFocused() && keyCode == KeyEvent.KEYCODE_DEL)
+				editText2.requestFocus();
+			
+			return super.onKeyUp(keyCode, event);
 		});
 	}
 }
