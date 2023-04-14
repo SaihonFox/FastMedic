@@ -1,0 +1,12 @@
+package com.polus_plus.fast_medic.Requests.APIs;
+
+public class Token {
+	String token;
+	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
+}

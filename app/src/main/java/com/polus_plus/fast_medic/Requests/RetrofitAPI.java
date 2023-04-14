@@ -8,14 +8,18 @@ public class RetrofitAPI {
 	public static String url = "https://medic.madskill.ru";
 	
 	public static String token;
+	public static boolean isLoggedIn;
+	
+	public RetrofitAPI() {
+	
+	}
 	
 	public static Retrofit instance() {
-		if(retrofit == null) {
+		if(retrofit == null)
 			retrofit = new Retrofit.Builder()
 					.baseUrl(url)
 					.addConverterFactory(GsonConverterFactory.create())
 					.build();
-		}
 		return retrofit;
 	}
 }

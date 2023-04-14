@@ -14,4 +14,6 @@
     <string name="login_with">Или войдите с помощью</string>
     <string name="next">Далее</string>
     <string name="login_for">Войдите, чтобы пользоваться функциями приложения</string>
+    <string name="cooldown">Отправить код повторно можно будет через %n секунд</string>
+    <string name="enter_code_from_mail">Введите код из E-mail</string>
 </resources>
