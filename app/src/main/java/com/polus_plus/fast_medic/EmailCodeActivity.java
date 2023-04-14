@@ -2,7 +2,10 @@ package com.polus_plus.fast_medic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.polus_plus.fast_medic.Requests.APIs.User.SendCode;
@@ -20,6 +23,9 @@ public class EmailCodeActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_email_code);
+		
+		View button = findViewById(R.id.backButton_ec);
+		button.setOnClickListener(view -> startActivity(new Intent(this, PasswordCreatingActivity.class)));
 		
 		TextView tv = new TextView(this);
 		
