@@ -71,62 +71,8 @@ public class PasswordCreatingActivity extends AppCompatActivity {
 			else
 				intent.putExtra("password", "0");
 			startActivity(intent);
+			finish();
 		});
-		
-		/*buttonDelete.setOnClickListener(view -> {
-			password = password.substring(0, password.length() - 1);
-			UpdateDots();
-		});*/
-		/*button0.setOnClickListener(view -> {
-			if(password.length() <= 4)
-				password += "0";
-			UpdateDots();
-		});
-		button1.setOnClickListener(view -> {
-			if(password.length() <= 4)
-				password += "1";
-			UpdateDots();
-		});
-		button2.setOnClickListener(view -> {
-			if(password.length() <= 4)
-				password += "2";
-			UpdateDots();
-		});
-		button3.setOnClickListener(view -> {
-			if(password.length() <= 4)
-				password += "3";
-			UpdateDots();
-		});
-		button4.setOnClickListener(view -> {
-			if(password.length() <= 4)
-				password += "4";
-			UpdateDots();
-		});
-		button5.setOnClickListener(view -> {
-			if(password.length() <= 4)
-				password += "5";
-			UpdateDots();
-		});
-		button6.setOnClickListener(view -> {
-			if(password.length() <= 4)
-				password += "6";
-			UpdateDots();
-		});
-		button7.setOnClickListener(view -> {
-			if(password.length() <= 4)
-				password += "7";
-			UpdateDots();
-		});
-		button8.setOnClickListener(view -> {
-			if(password.length() <= 4)
-				password += "8";
-			UpdateDots();
-		});
-		button9.setOnClickListener(view -> {
-			if(password.length() <= 4)
-				password += "9";
-			UpdateDots();
-		});*/
 		
 		button0.setOnTouchListener(new PCButtonTouchListener());
 		button1.setOnTouchListener(new PCButtonTouchListener());

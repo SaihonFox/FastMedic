@@ -34,37 +34,27 @@ public class AnalysesActivity extends AppCompatActivity {
 		
 		TextView tv = findViewById(R.id.textView2_analys);
 		
-		JSONPlaceHolderAPI jsonPlaceHolderAPI = RetrofitAPI.api();
-		
 		SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
 		
 		String token = settings.getString("token", "");
 		
-		/*JSONObject toSend = new JSONObject();
-		try {
-			toSend.put("firstname", "1");
-			toSend.put("lastname", "1");
-			toSend.put("middlename", "1");
-			toSend.put("bith", 1);
-			toSend.put("pol", "Мужской");
-		} catch (Exception ignored) {}*/
-		
-		UpdateProfileSend toSend = new UpdateProfileSend();
-		toSend.setFirstname("OKI");
+		UpdateProfileSend toSend = new UpdateProfileSend("OKI", "ABOBA", "BEBRA", "6", "Tractor"); // --work
+		/*toSend.setFirstname("OKI");
 		toSend.setLastname("ABOBA");
-		toSend.setLastname("BEBRA");
+		toSend.setLastname("BEBRA"); --error, doesn't work
 		toSend.setBith("6");
-		toSend.setPol("Tractor");
+		toSend.setPol("Tractor");*/
 		
+		JSONPlaceHolderAPI jsonPlaceHolderAPI = RetrofitAPI.api();
 		Call<UpdateProfileGet> updateProfileGetCall = jsonPlaceHolderAPI.updateProfile(token, toSend);
 		
 		updateProfileGetCall.enqueue(new Callback<UpdateProfileGet>() {
 			@Override
 			public void onResponse(Call<UpdateProfileGet> call, Response<UpdateProfileGet> response) {
 				if(!response.isSuccessful()) {
-					String array = null;
+					String array = "null";
 					try {
-						array = new JSONArray(response.body()).toString();
+						array = new JSONArray(response.body()).length() + "";
 					} catch (JSONException e) {
 						throw new RuntimeException(e);
 					}
@@ -72,23 +62,14 @@ public class AnalysesActivity extends AppCompatActivity {
 					return;
 				}
 				
-				UpdateProfileGet profileGets = response.body();
-				tv.setText(profileGets.getId());
-				//profileGets.sort(Comparator.comparingInt(UpdateProfileGet::getId));
-				
-				//String content = "length: " + profileGets.size() + "\n";
-				/*for(UpdateProfileGet profileGet : profileGets) {
-					content += "ID: " + profileGet.getId() + "\n";
-					content += "Name: " + profileGet.getFirstname() + "\n";
-					content += "LastName: " + profileGet.getLastname() + "\n";
-					content += "MiddleName: " + profileGet.getMiddlename() + "\n";
-					content += "Bith: " + profileGet.getBith() + "\n";
-					content += "Pol: " + profileGet.getPol() + "\n";
-					content += "Image: " + profileGet.getImage() + "\n";
-					
-					tv.append(content);
-					content = "";
-				}*/
+				UpdateProfileGet profileGet = response.body();
+				tv.append("ID: " + profileGet.getId() + "\n");
+				tv.append("FirstName: " + profileGet.getFirstname() + "\n");
+				tv.append("LastName: " + profileGet.getLastname() + "\n");
+				tv.append("MiddleName: " + profileGet.getMiddlename() + "\n");
+				tv.append("Pol: " + profileGet.getPol() + "\n");
+				tv.append("Bith: " + profileGet.getBith() + "\n");
+				tv.append("Image: " + profileGet.getImage() + "\n");
 			}
 			
 			@Override
@@ -96,29 +77,5 @@ public class AnalysesActivity extends AppCompatActivity {
 				tv.setText(t.getMessage());
 			}
 		});
-		
-		/*Call<List<Orders>> ordersCall = jsonPlaceHolderAPI.getOrders(token);
-		
-		ordersCall.enqueue(new Callback<List<Orders>>() {
-			@Override
-			public void onResponse(Call<List<Orders>> call, Response<List<Orders>> response) {
-				if(!response.isSuccessful()) {
-					if(response.code() == 403) {
-						tv.append("Не авторизованы");
-					}
-					return;
-				}
-				
-				List<Orders> orders = response.body();
-				orders.sort(Comparator.comparingInt(Orders::getId));
-				
-				
-			}
-			
-			@Override
-			public void onFailure(Call<List<Orders>> call, Throwable t) {
-				tv.setText(t.getMessage());
-			}
-		});*/
 	}
 }

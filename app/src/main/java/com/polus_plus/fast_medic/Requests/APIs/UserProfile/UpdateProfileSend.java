@@ -7,6 +7,14 @@ public class UpdateProfileSend {
 	String bith;
 	String pol;
 	
+	public UpdateProfileSend(String firstname, String lastname, String middlename, String bith, String pol) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.middlename = middlename;
+		this.bith = bith;
+		this.pol = pol;
+	}
+	
 	public String getFirstname() {
 		return firstname;
 	}

@@ -20,7 +20,10 @@ public class CardCreatingActivity extends AppCompatActivity {
 		Bundle bundle = getIntent().getExtras();
 		
 		TextView skip = findViewById(R.id.skipTextView_cc);
-		skip.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), AnalysesActivity.class)));
+		skip.setOnClickListener(view -> {
+			startActivity(new Intent(getApplicationContext(), AnalysesActivity.class));
+			finish();
+		});
 		
 		Spinner spinner = findViewById(R.id.polSpinner_cc);
 		

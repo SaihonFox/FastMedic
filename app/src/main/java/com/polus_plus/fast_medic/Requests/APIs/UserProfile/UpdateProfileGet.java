@@ -9,6 +9,16 @@ public class UpdateProfileGet {
 	String pol;
 	String image;
 	
+	public UpdateProfileGet(int id, String firstname, String lastname, String middlename, String bith, String pol, String image) {
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.middlename = middlename;
+		this.bith = bith;
+		this.pol = pol;
+		this.image = image;
+	}
+	
 	public int getId() {
 		return id;
 	}
