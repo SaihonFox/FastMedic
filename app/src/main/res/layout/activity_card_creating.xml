@@ -108,7 +108,8 @@
         android:layout_height="48dp"
         android:background="@drawable/cc_input_rounded"
         android:ems="10"
-        android:hint="Имя"
+        android:hint="@string/name"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:paddingLeft="14dp"
         android:textColorHint="#939396"
@@ -117,7 +118,7 @@
         app:layout_constraintStart_toStartOf="@id/inputsView_cc"
         app:layout_constraintTop_toTopOf="@id/inputsView_cc"
         app:layout_constraintVertical_bias="0.0"
-        tools:ignore="LabelFor,VisualLintTextFieldSize" />
+        tools:ignore="LabelFor,RtlHardcoded,RtlSymmetry,VisualLintTextFieldSize,TextContrastCheck" />
 
     <EditText
         android:id="@+id/lastnameEditText_cc"
@@ -126,7 +127,8 @@
         android:layout_marginTop="72dp"
         android:background="@drawable/cc_input_rounded"
         android:ems="10"
-        android:hint="Отчество"
+        android:hint="@string/lastname"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:paddingLeft="14dp"
         android:textColorHint="#939396"
@@ -135,7 +137,7 @@
         app:layout_constraintStart_toStartOf="@id/inputsView_cc"
         app:layout_constraintTop_toTopOf="@id/inputsView_cc"
         app:layout_constraintVertical_bias="0.0"
-        tools:ignore="LabelFor,VisualLintTextFieldSize" />
+        tools:ignore="LabelFor,RtlHardcoded,RtlSymmetry,TextContrastCheck,VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/patronymicEditText_cc"
@@ -144,8 +146,9 @@
         android:layout_marginTop="144dp"
         android:background="@drawable/cc_input_rounded"
         android:ems="10"
-        android:hint="Фамилия"
-        android:inputType="textPersonName"
+        android:hint="@string/patronymic"
+        android:importantForAutofill="no"
+        android:inputType="date|textPersonName"
         android:paddingLeft="14dp"
         android:textColorHint="#939396"
         app:layout_constraintBottom_toBottomOf="@id/inputsView_cc"
@@ -153,7 +156,7 @@
         app:layout_constraintStart_toStartOf="@id/inputsView_cc"
         app:layout_constraintTop_toTopOf="@id/inputsView_cc"
         app:layout_constraintVertical_bias="0.0"
-        tools:ignore="LabelFor,VisualLintTextFieldSize" />
+        tools:ignore="LabelFor,RtlHardcoded,RtlSymmetry,TextContrastCheck,VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/birthdayEditText_cc"
@@ -162,14 +165,31 @@
         android:layout_marginTop="216dp"
         android:background="@drawable/cc_input_rounded"
         android:ems="10"
-        android:hint="Дата рождения"
+        android:hint="@string/birthday"
         android:inputType="date"
         android:paddingLeft="14dp"
         android:textColorHint="#939396"
-        app:layout_constraintBottom_toBottomOf="@+id/inputsView_cc"
-        app:layout_constraintEnd_toEndOf="@+id/inputsView_cc"
+        app:layout_constraintBottom_toBottomOf="@id/inputsView_cc"
+        app:layout_constraintEnd_toEndOf="@id/inputsView_cc"
         app:layout_constraintStart_toStartOf="@id/inputsView_cc"
-        app:layout_constraintTop_toTopOf="@+id/inputsView_cc"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@id/inputsView_cc"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="RtlHardcoded,RtlSymmetry,TextContrastCheck,VisualLintTextFieldSize"
+        android:importantForAutofill="no" />
+
+    <AutoCompleteTextView
+        android:id="@+id/polAutoCompleteTextView_сс"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/cc_input_rounded"
+        android:hint="@string/pol"
+        android:paddingLeft="14dp"
+        android:textColorHint="#939396"
+        app:layout_constraintBottom_toBottomOf="@id/inputsView_cc"
+        app:layout_constraintEnd_toEndOf="@id/inputsView_cc"
+        app:layout_constraintStart_toStartOf="@id/inputsView_cc"
+        app:layout_constraintTop_toTopOf="@id/inputsView_cc"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="RtlHardcoded,RtlSymmetry,VisualLintTextFieldSize,TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

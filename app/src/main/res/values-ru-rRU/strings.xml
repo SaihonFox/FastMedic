@@ -16,4 +16,9 @@
     <string name="login_for">Войдите, чтобы пользоваться функциями приложения</string>
     <string name="cooldown">Отправить код повторно можно будет через %n секунд</string>
     <string name="enter_code_from_mail">Введите код из E-mail</string>
+    <string name="pol">Пол</string>
+    <string name="lastname">Отчество</string>
+    <string name="name">Имя</string>
+    <string name="birthday">Дата рождения</string>
+    <string name="patronymic">Фамилия</string>
 </resources>
