@@ -38,10 +38,7 @@ public class AnalysesActivity extends AppCompatActivity {
 			public void onResponse(Call<List<Orders>> call, Response<List<Orders>> response) {
 				if(!response.isSuccessful()) {
 					if(response.code() == 403) {
-						tv.append("Не авторизованы: " + settings.getString("token1", "non1\n"));
-						tv.append("Не авторизованы: " + settings.getString("token2", "non2\n"));
-						tv.append("Не авторизованы: " + settings.getString("token3", "non3\n"));
-						tv.append("Не авторизованы: " + settings.getString("token4", "non4\n"));
+						tv.append("Не авторизованы: " + settings.getString("token", "non"));
 					}
 					return;
 				}

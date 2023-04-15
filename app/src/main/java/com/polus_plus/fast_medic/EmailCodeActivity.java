@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.polus_plus.fast_medic.Requests.APIs.Token;
 import com.polus_plus.fast_medic.Requests.JSONPlaceHolderAPI;
 import com.polus_plus.fast_medic.Requests.RetrofitAPI;
@@ -108,9 +109,9 @@ public class EmailCodeActivity extends AppCompatActivity {
 								return;
 							}
 							
-							if(settings.contains("token"))
-								settings.edit().remove("token").apply();
-							settings.edit().putString("token", response.body().getToken()).apply();
+							Gson gson = new Gson();
+							String json = gson.toJson(response.body());
+							settings.edit().putString("token", json).apply();
 							
 							if(settings.contains("isLoggedIn"))
 								settings.edit().remove("isLoggedIn").apply();
