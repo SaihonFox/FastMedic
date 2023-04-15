@@ -166,7 +166,8 @@
         android:background="@drawable/cc_input_rounded"
         android:ems="10"
         android:hint="@string/birthday"
-        android:inputType="date"
+        android:importantForAutofill="no"
+        android:inputType="date|datetime"
         android:paddingLeft="14dp"
         android:textColorHint="#939396"
         app:layout_constraintBottom_toBottomOf="@id/inputsView_cc"
@@ -174,8 +175,7 @@
         app:layout_constraintStart_toStartOf="@id/inputsView_cc"
         app:layout_constraintTop_toTopOf="@id/inputsView_cc"
         app:layout_constraintVertical_bias="0.0"
-        tools:ignore="RtlHardcoded,RtlSymmetry,TextContrastCheck,VisualLintTextFieldSize"
-        android:importantForAutofill="no" />
+        tools:ignore="RtlHardcoded,RtlSymmetry,TextContrastCheck,VisualLintTextFieldSize" />
 
     <AutoCompleteTextView
         android:id="@+id/polAutoCompleteTextView_сс"
