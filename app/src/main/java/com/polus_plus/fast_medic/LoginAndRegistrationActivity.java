@@ -19,6 +19,8 @@ import com.polus_plus.fast_medic.Requests.APIs.User.SendCode;
 import com.polus_plus.fast_medic.Requests.JSONPlaceHolderAPI;
 import com.polus_plus.fast_medic.Requests.RetrofitAPI;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,7 +52,7 @@ public class LoginAndRegistrationActivity extends AppCompatActivity {
 				sendCodeCall.enqueue(new Callback<SendCode>() {
 					@Override
 					public void onResponse(Call<SendCode> call, Response<SendCode> response) {
-						if(!response.isSuccessful())
+						if(!response.isSuccessful() && response.code() != 200)
 							return;
 						
 						Toast.makeText(LoginAndRegistrationActivity.this, "Код был отправлен на вашу почту", Toast.LENGTH_SHORT).show();

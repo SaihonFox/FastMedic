@@ -1,16 +1,18 @@
 package com.polus_plus.fast_medic.Requests.APIs.OrderUser;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Orders {
-	int id;
-	int patient_id;
-	String created_at;
-	String updated_at;
-	int order_id;
-	int catalog_id;
-	String price;
-	OrdersPatient patient;
-	OrdersOrder order;
-	OrdersItem item;
+	@SerializedName("id") int id;
+	@SerializedName("patient_id") int patient_id;
+	@SerializedName("created_at") String created_at;
+	@SerializedName("updated_at") String updated_at;
+	@SerializedName("order_id") int order_id;
+	@SerializedName("catalog_id") int catalog_id;
+	@SerializedName("price") String price;
+	@SerializedName("patient") OrdersPatient patient;
+	@SerializedName("order") OrdersOrder order;
+	@SerializedName("item") OrdersItem item;
 	
 	public int getId() {
 		return id;
