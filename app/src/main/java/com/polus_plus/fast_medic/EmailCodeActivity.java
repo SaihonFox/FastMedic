@@ -71,10 +71,6 @@ public class EmailCodeActivity extends AppCompatActivity {
 									settings.edit().remove("isLoggedIn").apply();
 								settings.edit().putBoolean("isLoggedIn", true).apply();
 								
-								editText1.clearFocus();
-								InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-								imm.hideSoftInputFromWindow(editText1.getWindowToken(), 0);
-								
 								Toast.makeText(getApplicationContext(), "Вы успешно вошли", Toast.LENGTH_SHORT).show();
 								startActivity(new Intent(getApplicationContext(), PasswordCreatingActivity.class));
 							}
@@ -120,10 +116,6 @@ public class EmailCodeActivity extends AppCompatActivity {
 								if(settings.contains("isLoggedIn"))
 									settings.edit().remove("isLoggedIn").apply();
 								settings.edit().putBoolean("isLoggedIn", true).apply();
-								
-								editText2.clearFocus();
-								InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-								imm.hideSoftInputFromWindow(editText2.getWindowToken(), 0);
 								
 								Toast.makeText(getApplicationContext(), "Вы успешно вошли", Toast.LENGTH_SHORT).show();
 								startActivity(new Intent(getApplicationContext(), PasswordCreatingActivity.class));
@@ -171,10 +163,6 @@ public class EmailCodeActivity extends AppCompatActivity {
 									settings.edit().remove("isLoggedIn").apply();
 								settings.edit().putBoolean("isLoggedIn", true).apply();
 								
-								editText3.clearFocus();
-								InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-								imm.hideSoftInputFromWindow(editText3.getWindowToken(), 0);
-								
 								Toast.makeText(getApplicationContext(), "Вы успешно вошли", Toast.LENGTH_SHORT).show();
 								startActivity(new Intent(getApplicationContext(), PasswordCreatingActivity.class));
 							}
@@ -220,10 +208,6 @@ public class EmailCodeActivity extends AppCompatActivity {
 								if(settings.contains("isLoggedIn"))
 									settings.edit().remove("isLoggedIn").apply();
 								settings.edit().putBoolean("isLoggedIn", true).apply();
-								
-								editText4.clearFocus();
-								InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-								imm.hideSoftInputFromWindow(editText4.getWindowToken(), 0);
 								
 								Toast.makeText(getApplicationContext(), "Вы успешно вошли", Toast.LENGTH_SHORT).show();
 								startActivity(new Intent(getApplicationContext(), PasswordCreatingActivity.class));
@@ -272,59 +256,6 @@ public class EmailCodeActivity extends AppCompatActivity {
 				editText2.requestFocus();
 			
 			return super.onKeyUp(keyCode, event);
-		});
-	}
-	
-	public void onFinal(EditText editText1, EditText editText2, EditText editText3, EditText editText4) {
-		editText1.addTextChangedListener(new TextWatcher() {
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-			
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				if(editText1.getText().toString().length() == 1) {
-					if(editText1.getText().length() == 1
-							&& editText2.getText().length() == 1
-							&& editText3.getText().length() == 1
-							&& editText4.getText().length() == 1) {
-						SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
-						
-						String code = editText1.getText().toString() + editText2.getText().toString() + editText3.getText().toString() + editText4.getText().toString();
-						
-						JSONPlaceHolderAPI jsonPlaceHolderAPI = RetrofitAPI.api();
-						Call<Token> tokenCall = jsonPlaceHolderAPI.signin(settings.getString("email", ""), code);
-						
-						tokenCall.enqueue(new Callback<Token>() {
-							@Override
-							public void onResponse(Call<Token> call, Response<Token> response) {
-								if(!response.isSuccessful()) {
-									Toast.makeText(EmailCodeActivity.this, "Произошли некоторые ошибки", Toast.LENGTH_SHORT).show();
-									return;
-								}
-								
-								if(settings.contains("isLoggedIn"))
-									settings.edit().remove("isLoggedIn").apply();
-								settings.edit().putBoolean("isLoggedIn", true).apply();
-								
-								editText1.clearFocus();
-								InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-								imm.hideSoftInputFromWindow(editText1.getWindowToken(), 0);
-								
-								Toast.makeText(getApplicationContext(), "Вы успешно вошли", Toast.LENGTH_SHORT).show();
-								startActivity(new Intent(getApplicationContext(), PasswordCreatingActivity.class));
-							}
-							
-							@Override
-							public void onFailure(Call<Token> call, Throwable t) {
-								Toast.makeText(EmailCodeActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-							}
-						});
-					}
-				}
-			}
-			
-			@Override
-			public void afterTextChanged(Editable s) {}
 		});
 	}
 }

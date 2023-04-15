@@ -22,4 +22,9 @@
     <string name="name">Имя</string>
     <string name="birthday">Дата рождения</string>
     <string name="patronymic">Фамилия</string>
+
+    <string-array name="pol">
+        <item>Мужской</item>
+        <item>Женский</item>
+    </string-array>
 </resources>
