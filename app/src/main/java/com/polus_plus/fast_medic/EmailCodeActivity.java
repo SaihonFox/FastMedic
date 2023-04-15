@@ -41,10 +41,206 @@ public class EmailCodeActivity extends AppCompatActivity {
 		selectNext(editText2, editText3);
 		selectNext(editText3, editText4);
 		
-		onFinal(editText1, editText2, editText3, editText4);
-		onFinal(editText2, editText1, editText3, editText4);
-		onFinal(editText3, editText2, editText1, editText4);
-		onFinal(editText4, editText2, editText3, editText1);
+		{
+			editText1.addTextChangedListener(new TextWatcher() {
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+				
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count) {
+					if(editText1.getText().length() == 1
+							&& editText2.getText().length() == 1
+							&& editText3.getText().length() == 1
+							&& editText4.getText().length() == 1) {
+						SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
+						
+						String code = editText1.getText().toString() + editText2.getText().toString() + editText3.getText().toString() + editText4.getText().toString();
+						
+						JSONPlaceHolderAPI jsonPlaceHolderAPI = RetrofitAPI.api();
+						Call<Token> tokenCall = jsonPlaceHolderAPI.signin(settings.getString("email", ""), code);
+						
+						tokenCall.enqueue(new Callback<Token>() {
+							@Override
+							public void onResponse(Call<Token> call, Response<Token> response) {
+								if(!response.isSuccessful()) {
+									Toast.makeText(EmailCodeActivity.this, "Ошибка: " + response.code(), Toast.LENGTH_SHORT).show();
+									return;
+								}
+								
+								if(settings.contains("isLoggedIn"))
+									settings.edit().remove("isLoggedIn").apply();
+								settings.edit().putBoolean("isLoggedIn", true).apply();
+								
+								editText1.clearFocus();
+								InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+								imm.hideSoftInputFromWindow(editText1.getWindowToken(), 0);
+								
+								Toast.makeText(getApplicationContext(), "Вы успешно вошли", Toast.LENGTH_SHORT).show();
+								startActivity(new Intent(getApplicationContext(), PasswordCreatingActivity.class));
+							}
+							
+							@Override
+							public void onFailure(Call<Token> call, Throwable t) {
+								Toast.makeText(EmailCodeActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+							}
+						});
+					}
+				}
+				
+				@Override
+				public void afterTextChanged(Editable s) {}
+			});
+		}
+		{
+			editText2.addTextChangedListener(new TextWatcher() {
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+				
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count) {
+					if(editText1.getText().length() == 1
+					&& editText2.getText().length() == 1
+					&& editText3.getText().length() == 1
+					&& editText4.getText().length() == 1) {
+						SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
+						
+						String code = editText1.getText().toString() + editText2.getText().toString() + editText3.getText().toString() + editText4.getText().toString();
+						
+						JSONPlaceHolderAPI jsonPlaceHolderAPI = RetrofitAPI.api();
+						Call<Token> tokenCall = jsonPlaceHolderAPI.signin(settings.getString("email", ""), code);
+						
+						tokenCall.enqueue(new Callback<Token>() {
+							@Override
+							public void onResponse(Call<Token> call, Response<Token> response) {
+								if(!response.isSuccessful()) {
+									Toast.makeText(EmailCodeActivity.this, "Ошибка: " + response.code(), Toast.LENGTH_SHORT).show();
+									return;
+								}
+								
+								if(settings.contains("isLoggedIn"))
+									settings.edit().remove("isLoggedIn").apply();
+								settings.edit().putBoolean("isLoggedIn", true).apply();
+								
+								editText2.clearFocus();
+								InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+								imm.hideSoftInputFromWindow(editText2.getWindowToken(), 0);
+								
+								Toast.makeText(getApplicationContext(), "Вы успешно вошли", Toast.LENGTH_SHORT).show();
+								startActivity(new Intent(getApplicationContext(), PasswordCreatingActivity.class));
+							}
+							
+							@Override
+							public void onFailure(Call<Token> call, Throwable t) {
+								Toast.makeText(EmailCodeActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+							}
+						});
+					}
+				}
+				
+				@Override
+				public void afterTextChanged(Editable s) {}
+			});
+		}
+		{
+			editText3.addTextChangedListener(new TextWatcher() {
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+				
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count) {
+					if(editText1.getText().length() == 1
+							&& editText2.getText().length() == 1
+							&& editText3.getText().length() == 1
+							&& editText4.getText().length() == 1) {
+						SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
+						
+						String code = editText1.getText().toString() + editText2.getText().toString() + editText3.getText().toString() + editText4.getText().toString();
+						
+						JSONPlaceHolderAPI jsonPlaceHolderAPI = RetrofitAPI.api();
+						Call<Token> tokenCall = jsonPlaceHolderAPI.signin(settings.getString("email", ""), code);
+						
+						tokenCall.enqueue(new Callback<Token>() {
+							@Override
+							public void onResponse(Call<Token> call, Response<Token> response) {
+								if(!response.isSuccessful()) {
+									Toast.makeText(EmailCodeActivity.this, "Ошибка: " + response.code(), Toast.LENGTH_SHORT).show();
+									return;
+								}
+								
+								if(settings.contains("isLoggedIn"))
+									settings.edit().remove("isLoggedIn").apply();
+								settings.edit().putBoolean("isLoggedIn", true).apply();
+								
+								editText3.clearFocus();
+								InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+								imm.hideSoftInputFromWindow(editText3.getWindowToken(), 0);
+								
+								Toast.makeText(getApplicationContext(), "Вы успешно вошли", Toast.LENGTH_SHORT).show();
+								startActivity(new Intent(getApplicationContext(), PasswordCreatingActivity.class));
+							}
+							
+							@Override
+							public void onFailure(Call<Token> call, Throwable t) {
+								Toast.makeText(EmailCodeActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+							}
+						});
+					}
+				}
+				
+				@Override
+				public void afterTextChanged(Editable s) {}
+			});
+		}
+		{
+			editText4.addTextChangedListener(new TextWatcher() {
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+				
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count) {
+					if(editText1.getText().length() == 1
+							&& editText2.getText().length() == 1
+							&& editText3.getText().length() == 1
+							&& editText4.getText().length() == 1) {
+						SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
+						
+						String code = editText1.getText().toString() + editText2.getText().toString() + editText3.getText().toString() + editText4.getText().toString();
+						
+						JSONPlaceHolderAPI jsonPlaceHolderAPI = RetrofitAPI.api();
+						Call<Token> tokenCall = jsonPlaceHolderAPI.signin(settings.getString("email", ""), code);
+						
+						tokenCall.enqueue(new Callback<Token>() {
+							@Override
+							public void onResponse(Call<Token> call, Response<Token> response) {
+								if(!response.isSuccessful()) {
+									Toast.makeText(EmailCodeActivity.this, "Ошибка: " + response.code(), Toast.LENGTH_SHORT).show();
+									return;
+								}
+								
+								if(settings.contains("isLoggedIn"))
+									settings.edit().remove("isLoggedIn").apply();
+								settings.edit().putBoolean("isLoggedIn", true).apply();
+								
+								editText4.clearFocus();
+								InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+								imm.hideSoftInputFromWindow(editText4.getWindowToken(), 0);
+								
+								Toast.makeText(getApplicationContext(), "Вы успешно вошли", Toast.LENGTH_SHORT).show();
+								startActivity(new Intent(getApplicationContext(), PasswordCreatingActivity.class));
+							}
+							
+							@Override
+							public void onFailure(Call<Token> call, Throwable t) {
+								Toast.makeText(EmailCodeActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+							}
+						});
+					}
+				}
+				
+				@Override
+				public void afterTextChanged(Editable s) {}
+			});
+		}
 		
 		selectPrev(editText2, editText1);
 		selectPrev(editText3, editText2);
@@ -87,10 +283,6 @@ public class EmailCodeActivity extends AppCompatActivity {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				if(editText1.getText().toString().length() == 1) {
-					editText1.clearFocus();
-					InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-					imm.hideSoftInputFromWindow(editText1.getWindowToken(), 0);
-					
 					if(editText1.getText().length() == 1
 							&& editText2.getText().length() == 1
 							&& editText3.getText().length() == 1
@@ -113,6 +305,10 @@ public class EmailCodeActivity extends AppCompatActivity {
 								if(settings.contains("isLoggedIn"))
 									settings.edit().remove("isLoggedIn").apply();
 								settings.edit().putBoolean("isLoggedIn", true).apply();
+								
+								editText1.clearFocus();
+								InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+								imm.hideSoftInputFromWindow(editText1.getWindowToken(), 0);
 								
 								Toast.makeText(getApplicationContext(), "Вы успешно вошли", Toast.LENGTH_SHORT).show();
 								startActivity(new Intent(getApplicationContext(), PasswordCreatingActivity.class));
