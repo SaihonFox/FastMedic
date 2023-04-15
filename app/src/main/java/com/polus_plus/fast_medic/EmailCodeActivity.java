@@ -15,9 +15,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.polus_plus.fast_medic.Requests.APIs.Token;
 import com.polus_plus.fast_medic.Requests.JSONPlaceHolderAPI;
 import com.polus_plus.fast_medic.Requests.RetrofitAPI;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,6 +29,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class EmailCodeActivity extends AppCompatActivity {
 	
@@ -111,7 +116,12 @@ public class EmailCodeActivity extends AppCompatActivity {
 							
 							Gson gson = new Gson();
 							String json = gson.toJson(response.body());
-							settings.edit().putString("token", json).apply();
+							
+							try {
+								settings.edit().putString("token", "Bearer " + new JSONObject(json).getString("token")).apply();
+							} catch (JSONException e) {
+								throw new RuntimeException(e);
+							}
 							
 							if(settings.contains("isLoggedIn"))
 								settings.edit().remove("isLoggedIn").apply();
