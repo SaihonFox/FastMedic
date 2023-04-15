@@ -34,9 +34,9 @@ public class CardCreatingActivity extends AppCompatActivity {
 				text1.setTextSize(18);
 				
 				if(position == getCount()) {
-					((TextView) view.findViewById(android.R.id.text1)).setText("");
-					((TextView) view.findViewById(android.R.id.text1)).setHint((CharSequence) getItem(getCount()));
-					((TextView) view.findViewById(android.R.id.text1)).setHintTextColor(getResources().getColor(R.color.some_gray));
+					text1.setText("");
+					text1.setHint((CharSequence) getItem(getCount()));
+					text1.setHintTextColor(getResources().getColor(R.color.some_gray));
 				}
 				else
 					((TextView) view.findViewById(android.R.id.text1)).setHintTextColor(getResources().getColor(R.color.black));
