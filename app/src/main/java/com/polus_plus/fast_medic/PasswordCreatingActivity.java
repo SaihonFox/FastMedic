@@ -65,12 +65,8 @@ public class PasswordCreatingActivity extends AppCompatActivity {
 	@SuppressLint("ClickableViewAccessibility")
 	public void ButtonLogic() {
 		skip.setOnClickListener(view -> {
-			Intent intent = new Intent(this, CardCreatingActivity.class);
-			if(password.length() == 4)
-				intent.putExtra("password", password);
-			else
-				intent.putExtra("password", "0");
-			startActivity(intent);
+			getSharedPreferences("data", Context.MODE_PRIVATE).edit().putString("Password", password).apply();
+			startActivity(new Intent(this, CardCreatingActivity.class));
 			finish();
 		});
 		
