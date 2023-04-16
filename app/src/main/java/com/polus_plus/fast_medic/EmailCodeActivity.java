@@ -36,15 +36,15 @@ import retrofit2.Response;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class EmailCodeActivity extends AppCompatActivity {
-	int timer = 60;
+	int seconds = 60;
+	
+	Timer timer = new Timer();
+	TimerTask timerTask;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_email_code);
-		
-		View button = findViewById(R.id.backButton_ec);
-		button.setOnClickListener(view -> startActivity(new Intent(this, LoginAndRegistrationActivity.class)));
 		
 		EditText editText1 = findViewById(R.id.number1EditText_ec);
 		EditText editText2 = findViewById(R.id.number2EditText_ec);
@@ -52,10 +52,31 @@ public class EmailCodeActivity extends AppCompatActivity {
 		EditText editText4 = findViewById(R.id.number4EditText_ec);
 		
 		TextView cooldown = findViewById(R.id.cooldownTextView_ec);
+		
+		timerTask = new TimerTask() {
+			@Override
+			public void run() {
+				runOnUiThread(() -> {
+					if(seconds > 0)
+						cooldown.setText("Отправить код повторно можно будет через " + (seconds--) + " секунд");
+					else
+						cooldown.setText("Отправить код");
+				});
+			}
+		};
+		timer.scheduleAtFixedRate(timerTask, 0, 1000);
+		
+		View button = findViewById(R.id.backButton_ec);
+		button.setOnClickListener(view -> {
+			startActivity(new Intent(this, LoginAndRegistrationActivity.class));
+			timerTask.cancel();
+			timer.cancel();
+		});
+		
 		cooldown.setOnClickListener(view -> {
-			if(timer <= 0)
-				timer = 60;
-			else {
+			if(seconds <= 0) {
+				seconds = 60;
+				
 				SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
 				
 				JSONPlaceHolderAPI jsonPlaceHolderAPI = RetrofitAPI.api();
@@ -77,18 +98,6 @@ public class EmailCodeActivity extends AppCompatActivity {
 				});
 			}
 		});
-		
-		TimerTask timerTask = new TimerTask() {
-			@Override
-			public void run() {
-				if(timer > 0) {
-					timer--;
-					cooldown.setText("Отправить код повторно можно будет через " + timer + " секунд");
-				} else
-					cooldown.setText("Отправить код");
-			}
-		};
-		new Timer().scheduleAtFixedRate(timerTask, 0, 1000);
 		
 		selectNext(editText1, editText2);
 		selectNext(editText2, editText3);
