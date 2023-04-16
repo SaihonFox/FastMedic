@@ -29,42 +29,19 @@ import retrofit2.Retrofit;
 public class LoginAndRegistrationActivity extends AppCompatActivity {
 	boolean buttonEnabled = false;
 	
+	EditText editText;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_and_registration);
 		
 		Button button = findViewById(R.id.nextButton_lar);
-		EditText editText = findViewById(R.id.emailEditText_lar);
+		editText = findViewById(R.id.emailEditText_lar);
 		
 		button.setOnClickListener(view -> {
-			if(buttonEnabled) {
-				
-				SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
-				if(!settings.contains("email"))
-					settings.edit().putString("email", editText.getText().toString()).apply();
-				else
-					settings.edit().remove("email").putString("email", editText.getText().toString()).apply();
-				
-				JSONPlaceHolderAPI jsonPlaceHolderAPI = RetrofitAPI.api();
-				Call<SendCode> sendCodeCall = jsonPlaceHolderAPI.sendCode(editText.getText().toString());
-				
-				sendCodeCall.enqueue(new Callback<SendCode>() {
-					@Override
-					public void onResponse(Call<SendCode> call, Response<SendCode> response) {
-						if(!response.isSuccessful() && response.code() != 200)
-							return;
-						
-						Toast.makeText(LoginAndRegistrationActivity.this, "Код был отправлен на вашу почту", Toast.LENGTH_SHORT).show();
-						startActivity(new Intent().setClass(getApplicationContext(), EmailCodeActivity.class));
-					}
-					
-					@Override
-					public void onFailure(Call<SendCode> call, Throwable t) {
-						Toast.makeText(LoginAndRegistrationActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-					}
-				});
-			}
+			if(buttonEnabled)
+				sendEmailCode();
 		});
 		
 		editText.addTextChangedListener(new TextWatcher() {
@@ -73,9 +50,7 @@ public class LoginAndRegistrationActivity extends AppCompatActivity {
 			
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				String regex = "/^\\S+@\\S+\\.\\S+$/";
 				String text = editText.getText().toString();
-				
 				
 				if(Patterns.EMAIL_ADDRESS.matcher(text).matches()) {
 					button.setBackgroundResource(R.drawable.rounded_button_enabled);
@@ -98,7 +73,30 @@ public class LoginAndRegistrationActivity extends AppCompatActivity {
 		});
 	}
 	
-	public void sendEmailCode(String emailAddress) {
-	
+	public void sendEmailCode() {
+		SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
+		if(!settings.contains("email"))
+			settings.edit().putString("email", editText.getText().toString()).apply();
+		else
+			settings.edit().remove("email").putString("email", editText.getText().toString()).apply();
+		
+		JSONPlaceHolderAPI jsonPlaceHolderAPI = RetrofitAPI.api();
+		Call<SendCode> sendCodeCall = jsonPlaceHolderAPI.sendCode(editText.getText().toString());
+		
+		sendCodeCall.enqueue(new Callback<SendCode>() {
+			@Override
+			public void onResponse(Call<SendCode> call, Response<SendCode> response) {
+				if(!response.isSuccessful() && response.code() != 200)
+					return;
+				
+				Toast.makeText(LoginAndRegistrationActivity.this, "Код был отправлен на вашу почту", Toast.LENGTH_SHORT).show();
+				startActivity(new Intent().setClass(getApplicationContext(), EmailCodeActivity.class));
+			}
+			
+			@Override
+			public void onFailure(Call<SendCode> call, Throwable t) {
+				Toast.makeText(LoginAndRegistrationActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 }
