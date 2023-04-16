@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.polus_plus.fast_medic.Requests.APIs.Token;
+import com.polus_plus.fast_medic.Requests.APIs.User.SendCode;
 import com.polus_plus.fast_medic.Requests.JSONPlaceHolderAPI;
 import com.polus_plus.fast_medic.Requests.RetrofitAPI;
 
@@ -52,19 +53,39 @@ public class EmailCodeActivity extends AppCompatActivity {
 		
 		TextView cooldown = findViewById(R.id.cooldownTextView_ec);
 		cooldown.setOnClickListener(view -> {
-			if(timer == 0) {
+			if(timer <= 0)
 				timer = 60;
-				cooldown.setText("Отправить код повторно можно будет через 60 секунд");
+			else {
+				SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
+				
+				JSONPlaceHolderAPI jsonPlaceHolderAPI = RetrofitAPI.api();
+				Call<SendCode> sendCodeCall = jsonPlaceHolderAPI.sendCode(settings.getString("email", ""));
+				
+				sendCodeCall.enqueue(new Callback<SendCode>() {
+					@Override
+					public void onResponse(Call<SendCode> call, Response<SendCode> response) {
+						if(!response.isSuccessful() && response.code() != 200)
+							return;
+						
+						Toast.makeText(getApplicationContext(), "Код был отправлен на вашу почту", Toast.LENGTH_SHORT).show();
+					}
+					
+					@Override
+					public void onFailure(Call<SendCode> call, Throwable t) {
+						Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+					}
+				});
 			}
 		});
 		
 		TimerTask timerTask = new TimerTask() {
 			@Override
 			public void run() {
-				if(timer >= 0)
+				if(timer > 0) {
 					timer--;
-				
-				cooldown.setText("Отправить код повторно можно будет через " + timer + " секунд");
+					cooldown.setText("Отправить код повторно можно будет через " + timer + " секунд");
+				} else
+					cooldown.setText("Отправить код");
 			}
 		};
 		new Timer().scheduleAtFixedRate(timerTask, 0, 1000);
