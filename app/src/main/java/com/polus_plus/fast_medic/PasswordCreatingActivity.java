@@ -80,6 +80,8 @@ public class PasswordCreatingActivity extends AppCompatActivity {
 		button7.setOnTouchListener(new PCButtonTouchListener());
 		button8.setOnTouchListener(new PCButtonTouchListener());
 		button9.setOnTouchListener(new PCButtonTouchListener());
+		
+		buttonDelete.setOnTouchListener(new PCButtonTouchListener());
 	}
 	
 	public void UpdateDots() {
