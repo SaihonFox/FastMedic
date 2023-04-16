@@ -8,7 +8,7 @@
     tools:context=".ShoppingCartActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/backButton_sc"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginStart="20dp"

@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.polus_plus.fast_medic.Lists.ShoppingCartList;
 import com.polus_plus.fast_medic.Requests.APIs.Catalog.Catalog;
 import com.polus_plus.fast_medic.Requests.APIs.UserProfile.UpdateProfileSend;
 import com.polus_plus.fast_medic.Requests.JSONPlaceHolderAPI;
@@ -64,18 +63,12 @@ public class AnalysesActivity extends AppCompatActivity {
 				List<Catalog> catalogs = response.body();
 				catalogs.sort(Comparator.comparingInt(Catalog::getId));
 				
-				for(int i = 0; i < 1; i++) {
-					HashMap<String, String> map = new HashMap<>();
-					map.put("title", catalogs.get(i).getName());
-					map.put("price", catalogs.get(i).getPrice());
-					list.add(map);
-				}
-				/*for(Catalog catalog : catalogs) {
+				for(Catalog catalog : catalogs) {
 					HashMap<String, String> map = new HashMap<>();
 					map.put("title", catalog.getName());
 					map.put("price", catalog.getPrice());
 					list.add(map);
-				}*/
+				}
 				
 				bottomNavigationView.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), ShoppingCartActivity.class).putExtra("list", list)));
 			}
