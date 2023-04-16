@@ -26,6 +26,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,9 +55,19 @@ public class EmailCodeActivity extends AppCompatActivity {
 			if(timer == 0) {
 				timer = 60;
 				cooldown.setText("Отправить код повторно можно будет через 60 секунд");
-				
 			}
 		});
+		
+		TimerTask timerTask = new TimerTask() {
+			@Override
+			public void run() {
+				if(timer >= 0)
+					timer--;
+				
+				cooldown.setText("Отправить код повторно можно будет через " + timer + " секунд");
+			}
+		};
+		new Timer().scheduleAtFixedRate(timerTask, 0, 1000);
 		
 		selectNext(editText1, editText2);
 		selectNext(editText2, editText3);
