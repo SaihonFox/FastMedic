@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.polus_plus.fast_medic.Requests.APIs.Catalog.Catalog;
 import com.polus_plus.fast_medic.Requests.APIs.UserProfile.UpdateProfileSend;
 import com.polus_plus.fast_medic.Requests.JSONPlaceHolderAPI;
@@ -34,7 +35,10 @@ public class AnalysesActivity extends AppCompatActivity {
 		
 		BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView_analyses);
 		
-		//bottomNavigationView.addView();
+		bottomNavigationView.setOnItemSelectedListener((NavigationBarView.OnItemSelectedListener) item -> {
+			
+			return false;
+		});
 		
 		SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
 		String token = settings.getString("token", "");
