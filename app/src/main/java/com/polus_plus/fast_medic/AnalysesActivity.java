@@ -3,39 +3,41 @@ package com.polus_plus.fast_medic;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.JsonReader;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.polus_plus.fast_medic.Requests.APIs.OrderUser.Orders;
-import com.polus_plus.fast_medic.Requests.APIs.UserProfile.UpdateProfileGet;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.polus_plus.fast_medic.Lists.ShoppingCartList;
+import com.polus_plus.fast_medic.Requests.APIs.Catalog.Catalog;
 import com.polus_plus.fast_medic.Requests.APIs.UserProfile.UpdateProfileSend;
 import com.polus_plus.fast_medic.Requests.JSONPlaceHolderAPI;
 import com.polus_plus.fast_medic.Requests.RetrofitAPI;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AnalysesActivity extends AppCompatActivity {
+	public static ArrayList<HashMap<String, String>> list = new ArrayList<>();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_analyses);
 		
-		TextView tv = findViewById(R.id.textView2_analys);
+		BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView_analyses);
+		
+		//bottomNavigationView.addView();
 		
 		SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
-		
 		String token = settings.getString("token", "");
 		
 		UpdateProfileSend toSend = new UpdateProfileSend("OKI", "ABOBA", "BEBRA", "6", "Tractor"); // --work
@@ -46,36 +48,40 @@ public class AnalysesActivity extends AppCompatActivity {
 		toSend.setPol("Tractor");*/
 		
 		JSONPlaceHolderAPI jsonPlaceHolderAPI = RetrofitAPI.api();
-		Call<UpdateProfileGet> updateProfileGetCall = jsonPlaceHolderAPI.updateProfile(token, toSend);
-		
-		updateProfileGetCall.enqueue(new Callback<UpdateProfileGet>() {
+		Call<List<Catalog>> updateProfileGetCall = jsonPlaceHolderAPI.getCatalog();
+		updateProfileGetCall.enqueue(new Callback<List<Catalog>>() {
 			@Override
-			public void onResponse(Call<UpdateProfileGet> call, Response<UpdateProfileGet> response) {
+			public void onResponse(Call<List<Catalog>> call, Response<List<Catalog>> response) {
 				if(!response.isSuccessful()) {
-					String array = "null";
-					try {
-						array = new JSONArray(response.body()).length() + "";
-					} catch (JSONException e) {
-						throw new RuntimeException(e);
-					}
-					tv.setText("Code: " + response.code() + "\nMsg: " + response.message() + "\n" + array);
+					if(response.code() == 403)
+						Toast.makeText(AnalysesActivity.this, "Не авторизованы", Toast.LENGTH_SHORT).show();
+					if(response.code() == 422)
+						Toast.makeText(AnalysesActivity.this, "Ошибку возвращает сервер", Toast.LENGTH_SHORT).show();
+					
 					return;
 				}
 				
-				UpdateProfileGet profileGet = response.body();
-				tv.append("ID: " + profileGet.getId() + "\n");
-				tv.append("FirstName: " + profileGet.getFirstname() + "\n");
-				tv.append("LastName: " + profileGet.getLastname() + "\n");
-				tv.append("MiddleName: " + profileGet.getMiddlename() + "\n");
-				tv.append("Pol: " + profileGet.getPol() + "\n");
-				tv.append("Bith: " + profileGet.getBith() + "\n");
-				tv.append("Image: " + profileGet.getImage() + "\n");
+				List<Catalog> catalogs = response.body();
+				catalogs.sort(Comparator.comparingInt(Catalog::getId));
+				
+				for(int i = 0; i < 1; i++) {
+					HashMap<String, String> map = new HashMap<>();
+					map.put("title", catalogs.get(i).getName());
+					map.put("price", catalogs.get(i).getPrice());
+					list.add(map);
+				}
+				/*for(Catalog catalog : catalogs) {
+					HashMap<String, String> map = new HashMap<>();
+					map.put("title", catalog.getName());
+					map.put("price", catalog.getPrice());
+					list.add(map);
+				}*/
+				
+				bottomNavigationView.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), ShoppingCartActivity.class).putExtra("list", list)));
 			}
 			
 			@Override
-			public void onFailure(Call<UpdateProfileGet> call, Throwable t) {
-				tv.setText(t.getMessage());
-			}
+			public void onFailure(Call<List<Catalog>> call, Throwable t) {}
 		});
 	}
 }
