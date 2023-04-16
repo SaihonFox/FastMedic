@@ -57,9 +57,6 @@ public interface JSONPlaceHolderAPI {
 	@POST("/api/order")
 	Call<List<CreateProfile>> order(@Header("Authorization") String token, @Body CreateProfile profile);
 	
-	@POST("/api/saveAudioComment")
-	Call<List<CreateProfile>> saveAudioComment(@Header("Authorization") String token, CreateProfile profile);
-	
 	@GET("/api/orders")
 	Call<List<Orders>> getOrders(@Header("Authorization") String token);
 }

@@ -22,6 +22,7 @@
     <string name="name">Имя</string>
     <string name="birthday">Дата рождения</string>
     <string name="patronymic">Фамилия</string>
+    <string name="gotoFinish">Перейти к оформлению заказа</string>
 
     <string-array name="pol">
         <item>Мужской</item>
