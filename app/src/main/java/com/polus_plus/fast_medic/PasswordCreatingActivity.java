@@ -25,6 +25,7 @@ public class PasswordCreatingActivity extends AppCompatActivity {
 			button4, button5, button6,
 			button7, button8, button9;
 	TextView skip;
+	TextView title;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +40,14 @@ public class PasswordCreatingActivity extends AppCompatActivity {
 		init();
 		
 		ButtonLogic();
+		
+		if(getSharedPreferences("data", Context.MODE_PRIVATE).contains("password"))
+			title.setText("Введите пароль");
 	}
 	
 	public void init() {
 		skip = findViewById(R.id.skipTextView_pc);
+		title = findViewById(R.id.createPasswordTextView_pc);
 		
 		dot1 = findViewById(R.id.dot1ImageView_pc);
 		dot2 = findViewById(R.id.dot2ImageView_pc);
@@ -65,7 +70,8 @@ public class PasswordCreatingActivity extends AppCompatActivity {
 	@SuppressLint("ClickableViewAccessibility")
 	public void ButtonLogic() {
 		skip.setOnClickListener(view -> {
-			getSharedPreferences("data", Context.MODE_PRIVATE).edit().putString("Password", password).apply();
+			if(password.length() == 4)
+				getSharedPreferences("data", Context.MODE_PRIVATE).edit().putString("Password", password).apply();
 			startActivity(new Intent(this, CardCreatingActivity.class));
 			finish();
 		});
@@ -81,7 +87,11 @@ public class PasswordCreatingActivity extends AppCompatActivity {
 		button8.setOnTouchListener(new PCButtonTouchListener());
 		button9.setOnTouchListener(new PCButtonTouchListener());
 		
-		buttonDelete.setOnTouchListener(new PCButtonTouchListener());
+		buttonDelete.setOnClickListener(view -> {
+			if(password.length() > 0)
+				password = password.substring(0, password.length() - 1);
+			UpdateDots();
+		});
 	}
 	
 	public void UpdateDots() {
@@ -106,7 +116,9 @@ public class PasswordCreatingActivity extends AppCompatActivity {
 			dot3.setImageResource(R.drawable.blue_ellipse_filled);
 			dot4.setImageResource(R.drawable.blue_ellipse_filled);
 			
-			skip.setText("Завершить");
+			getSharedPreferences("data", Context.MODE_PRIVATE).edit().putString("password", password).apply();
+			startActivity(new Intent(this, CardCreatingActivity.class));
+			finish();
 		}
 		else
 			skip.setText("Пропустить");
