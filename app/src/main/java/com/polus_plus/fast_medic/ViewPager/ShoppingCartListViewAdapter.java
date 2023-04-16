@@ -21,6 +21,7 @@ public class ShoppingCartListViewAdapter extends BaseAdapter {
 	ShoppingCartActivity activity;
 	
 	int patientsCount = 1;
+	//int pos;
 	
 	TextView patients;
 	TextView sum;
@@ -48,6 +49,10 @@ public class ShoppingCartListViewAdapter extends BaseAdapter {
 	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		patientsCount = Integer.parseInt(list.get(position).get("patient"));
+		activity.finalSum += Integer.parseInt(list.get(position).get("price"));
+		activity.sum.setText(activity.finalSum + " ₽");
+		
 		View view = LayoutInflater.from(context).inflate(R.layout.cart_item, parent, false);
 		ImageView BG = view.findViewById(R.id.bgImageView_sc);
 		
@@ -59,12 +64,11 @@ public class ShoppingCartListViewAdapter extends BaseAdapter {
 		ImageView minusPatient = view.findViewById(R.id.minusImageView_sc);
 		addPatient.setOnClickListener(apView -> {
 			patientsCount++;
-			updatePatientsList();
 		});
 		minusPatient.setOnClickListener(mpView -> {
 			if(patientsCount > 1)
 				patientsCount--;
-			updatePatientsList();
+			activity.sum.setText((Integer.parseInt(list.get(position).get("price")) * patientsCount) + " ₽");
 		});
 		
 		Button delete = view.findViewById(R.id.deleteButton_sc);
@@ -82,9 +86,5 @@ public class ShoppingCartListViewAdapter extends BaseAdapter {
 		sum.setText(list.get(position).get("price") + " ₽");
 		
 		return view;
-	}
-	
-	public void updatePatientsList() {
-	
 	}
 }

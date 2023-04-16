@@ -67,6 +67,7 @@ public class AnalysesActivity extends AppCompatActivity {
 					HashMap<String, String> map = new HashMap<>();
 					map.put("title", catalog.getName());
 					map.put("price", catalog.getPrice());
+					map.put("patient", "1");
 					list.add(map);
 				}
 				
