@@ -94,7 +94,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/lar_icon"
+        app:srcCompat="@drawable/icon_rounded_two_corners"
         tools:ignore="ImageContrastCheck" />
 
     <View
@@ -145,4 +145,29 @@
         app:layout_constraintTop_toTopOf="@id/viewDotsGroup_Ob"
         app:srcCompat="@drawable/blue_ellipse_outlined"
         tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="45dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iconImageView_Ob"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/iconImageView_Ob"
+        app:layout_constraintTop_toTopOf="@+id/iconImageView_Ob"
+        app:srcCompat="@drawable/add" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="45dp"
+        android:rotation="90"
+        app:layout_constraintBottom_toBottomOf="@+id/iconImageView_Ob"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/iconImageView_Ob"
+        app:layout_constraintTop_toTopOf="@+id/iconImageView_Ob"
+        app:srcCompat="@drawable/add" />
 </androidx.constraintlayout.widget.ConstraintLayout>
