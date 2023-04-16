@@ -187,4 +187,14 @@
         app:layout_constraintStart_toStartOf="@id/inputsView_cc"
         app:layout_constraintTop_toTopOf="@id/inputsView_cc"
         app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/inputsView_cc"
+        app:layout_constraintEnd_toEndOf="@+id/polSpinner_cc"
+        app:layout_constraintTop_toTopOf="@+id/polSpinner_cc"
+        app:srcCompat="@drawable/vector" />
 </androidx.constraintlayout.widget.ConstraintLayout>
