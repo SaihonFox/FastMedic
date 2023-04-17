@@ -2,20 +2,37 @@ package com.polus_plus.fast_medic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class CardCreatingActivity extends AppCompatActivity {
+	EditText birthday;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_card_creating);
+		
+		birthday = findViewById(R.id.birthdayEditText_cc);
+		birthday.setOnFocusChangeListener((view, hasFocus) -> {
+			if(hasFocus) {
+				showDialog();
+				view.clearFocus();
+			}
+		});
 		
 		Bundle bundle = getIntent().getExtras();
 		
@@ -58,5 +75,17 @@ public class CardCreatingActivity extends AppCompatActivity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
 		spinner.setSelection(adapter.getCount());
+	}
+	
+	public void showDialog() {
+		Calendar calendar = Calendar.getInstance();
+		new DatePickerDialog(getApplicationContext(), (view1, year, month, dayOfMonth) -> {
+			String date = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
+					.withLocale(new Locale("ru"))
+					.format(LocalDate.of(year, month + 1, dayOfMonth));
+			date = date.substring(0, date.length() - 3);
+			birthday.setText(date);
+		}, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+				.show();
 	}
 }
