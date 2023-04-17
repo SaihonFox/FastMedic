@@ -31,6 +31,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
 		list = (ArrayList<HashMap<String, String>>) extras.get("list");
 		listView.setAdapter(new ShoppingCartListViewAdapter(this, list, this));
 		
+		
 		listView = findViewById(R.id.cartListView_sc);
 		
 		Button back = findViewById(R.id.backButton_sc);

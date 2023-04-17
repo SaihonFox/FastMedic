@@ -8,28 +8,22 @@
     tools:context=".AnalysesActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView_analyses"
+        android:id="@+id/bottomNavigationView_analys"
         android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:background="@drawable/item_selected_bnv"
-        app:itemTextColor="#1A6FEE"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:menu="@menu/bottom_menu" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
+        android:id="@+id/fragmentContainerView_analys"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView_analyses"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView_analys"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/bottom_nav_bar" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

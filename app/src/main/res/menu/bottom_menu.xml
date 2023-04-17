@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/analysesFragment"
+        android:enabled="true"
         android:title="Анализы"
-        android:icon="@drawable/analyses" />
+        android:menuCategory="container"
+        android:icon="@drawable/analyses"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/resultsFragment"
+        android:enabled="true"
+        android:icon="@drawable/results"
+        android:menuCategory="container"
         android:title="Результаты"
-        android:icon="@drawable/results" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/supportFragment"
+        android:enabled="true"
         android:title="Поддержка"
-        android:icon="@drawable/support" />
+        android:menuCategory="container"
+        android:icon="@drawable/support"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/profileFragment"
+        android:enabled="true"
+        android:icon="@drawable/profile"
+        android:menuCategory="container"
         android:title="Профиль"
-        android:icon="@drawable/profile" />
+        app:showAsAction="ifRoom" />
 </menu>

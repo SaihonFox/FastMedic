@@ -1,33 +1,22 @@
 package com.polus_plus.fast_medic;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+
+import static androidx.navigation.Navigation.findNavController;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-import com.polus_plus.fast_medic.Requests.APIs.Catalog.Catalog;
 import com.polus_plus.fast_medic.Requests.APIs.UserProfile.UpdateProfileSend;
 import com.polus_plus.fast_medic.Requests.JSONPlaceHolderAPI;
 import com.polus_plus.fast_medic.Requests.RetrofitAPI;
-
+import com.polus_plus.fast_medic.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class AnalysesActivity extends AppCompatActivity {
 	public static ArrayList<HashMap<String, String>> list = new ArrayList<>();
@@ -35,26 +24,11 @@ public class AnalysesActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.activity_analyses);
 		
-		BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView_analyses);
-		
-		bottomNavigationView.setOnItemSelectedListener((NavigationBarView.OnItemSelectedListener) item -> {
-			switch (item.getItemId()) {
-				case R.id.analysesFragment:
-					item.getIcon().setColorFilter(Color.parseColor("#1A6FEE"), PorterDuff.Mode.SRC_ATOP);
-					break;
-				case R.id.resultsFragment:
-					item.getIcon().setColorFilter(Color.parseColor("#1A6FEE"), PorterDuff.Mode.SRC_ATOP);
-					break;
-				case R.id.supportFragment:
-					break;
-				case R.id.profileFragment:
-					break;
-			}
-			
-			return true;
-		});
+		BottomNavigationView bottomNavView = findViewById(R.id.bottomNavigationView_analys);
+		NavController controller = findNavController(this, R.id.fragmentContainerView_analys);
 		
 		SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
 		String token = settings.getString("token", "");
@@ -67,7 +41,7 @@ public class AnalysesActivity extends AppCompatActivity {
 		toSend.setPol("Tractor");*/
 		
 		JSONPlaceHolderAPI jsonPlaceHolderAPI = RetrofitAPI.api();
-		Call<List<Catalog>> updateProfileGetCall = jsonPlaceHolderAPI.getCatalog();
+		/*Call<List<Catalog>> updateProfileGetCall = jsonPlaceHolderAPI.getCatalog();
 		updateProfileGetCall.enqueue(new Callback<List<Catalog>>() {
 			@Override
 			public void onResponse(Call<List<Catalog>> call, Response<List<Catalog>> response) {
@@ -96,6 +70,6 @@ public class AnalysesActivity extends AppCompatActivity {
 			
 			@Override
 			public void onFailure(Call<List<Catalog>> call, Throwable t) {}
-		});
+		});*/
 	}
 }

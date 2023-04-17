@@ -2,6 +2,8 @@ package com.polus_plus.fast_medic.Requests;
 
 import com.polus_plus.fast_medic.Requests.APIs.Catalog.Catalog;
 import com.polus_plus.fast_medic.Requests.APIs.Messages;
+import com.polus_plus.fast_medic.Requests.APIs.OrderUser.Order;
+import com.polus_plus.fast_medic.Requests.APIs.OrderUser.OrderGet;
 import com.polus_plus.fast_medic.Requests.APIs.Token;
 import com.polus_plus.fast_medic.Requests.APIs.User.SendCode;
 import com.polus_plus.fast_medic.Requests.APIs.UserProfile.CreateProfile;
@@ -55,7 +57,7 @@ public interface JSONPlaceHolderAPI {
 	//--------------------------------------------------------------------------
 	
 	@POST("/api/order")
-	Call<List<CreateProfile>> order(@Header("Authorization") String token, @Body CreateProfile profile);
+	Call<OrderGet> order(@Header("Authorization") String token, @Body Order profile);
 	
 	@GET("/api/orders")
 	Call<List<Orders>> getOrders(@Header("Authorization") String token);
