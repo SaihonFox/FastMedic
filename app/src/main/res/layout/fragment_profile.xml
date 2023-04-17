@@ -1,14 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:src="@drawable/profile_image_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:text="Карта пациента"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="182dp"
+        android:layout_marginEnd="20dp"
+        android:text="Без карты пациента вы не сможете заказать анализы."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="20dp"
+        android:text="В картах пациентов будут храниться результаты анализов вас и ваших близких."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <View
+        android:id="@+id/inputsView_cc2"
+        android:layout_width="0dp"
+        android:layout_height="336dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="253dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/nameEditText_cc3"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/cc_input_rounded"
+        android:ems="10"
+        android:hint="@string/name"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:paddingLeft="14dp"
+        android:textColorHint="#939396"
+        app:layout_constraintEnd_toEndOf="@+id/inputsView_cc2"
+        app:layout_constraintStart_toStartOf="@+id/inputsView_cc2"
+        app:layout_constraintTop_toTopOf="@+id/inputsView_cc2"
+        tools:ignore="LabelFor,RtlHardcoded,RtlSymmetry,VisualLintTextFieldSize,TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/patronymicEditText_cc3"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/cc_input_rounded"
+        android:ems="10"
+        android:hint="@string/lastname"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:paddingLeft="14dp"
+        android:textColorHint="#939396"
+        app:layout_constraintEnd_toEndOf="@+id/inputsView_cc2"
+        app:layout_constraintStart_toStartOf="@+id/inputsView_cc2"
+        app:layout_constraintTop_toBottomOf="@+id/nameEditText_cc3"
+        tools:ignore="LabelFor,RtlHardcoded,RtlSymmetry,TextContrastCheck,VisualLintTextFieldSize" />
+
+    <EditText
+        android:id="@+id/lastnameEditText_cc3"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/cc_input_rounded"
+        android:ems="10"
+        android:hint="@string/patronymic"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:paddingLeft="14dp"
+        android:textColorHint="#939396"
+        app:layout_constraintEnd_toEndOf="@+id/inputsView_cc2"
+        app:layout_constraintStart_toStartOf="@+id/inputsView_cc2"
+        app:layout_constraintTop_toBottomOf="@+id/patronymicEditText_cc3"
+        tools:ignore="LabelFor,RtlHardcoded,RtlSymmetry,TextContrastCheck,VisualLintTextFieldSize" />
+
+    <EditText
+        android:id="@+id/birthdayEditText_cc3"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/cc_input_rounded"
+        android:ems="10"
+        android:hint="@string/birthday"
+        android:importantForAutofill="no"
+        android:inputType="date|datetime"
+        android:paddingLeft="14dp"
+        android:textColorHint="#939396"
+        app:layout_constraintEnd_toEndOf="@+id/inputsView_cc2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/inputsView_cc2"
+        app:layout_constraintTop_toBottomOf="@+id/lastnameEditText_cc3"
+        tools:ignore="RtlHardcoded,RtlSymmetry,TextContrastCheck,VisualLintTextFieldSize" />
+
+    <Spinner
+        android:id="@+id/polSpinner_cc3"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/cc_input_rounded"
+        app:layout_constraintBottom_toBottomOf="@id/inputsView_cc2"
+        app:layout_constraintEnd_toEndOf="@id/inputsView_cc2"
+        app:layout_constraintStart_toStartOf="@id/inputsView_cc2"
+        app:layout_constraintTop_toTopOf="@id/inputsView_cc2"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/inputsView_cc2"
+        app:layout_constraintEnd_toEndOf="@+id/polSpinner_cc3"
+        app:layout_constraintTop_toTopOf="@+id/polSpinner_cc3"
+        app:srcCompat="@drawable/vector" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/rounded_button_enabled"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputsView_cc2" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="53dp"
+        android:layout_height="48dp"
+        android:src="@drawable/cam"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
