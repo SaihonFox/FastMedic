@@ -9,7 +9,11 @@
         android:id="@+id/analysesFragment"
         android:name="com.polus_plus.fast_medic.AnalysesFragment"
         android:label="fragment_analyses"
-        tools:layout="@layout/fragment_analyses" />
+        tools:layout="@layout/fragment_analyses" >
+        <action
+            android:id="@+id/action_analysesFragment_to_resultsFragment"
+            app:destination="@id/resultsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/resultsFragment"
         android:name="com.polus_plus.fast_medic.ResultsFragment"

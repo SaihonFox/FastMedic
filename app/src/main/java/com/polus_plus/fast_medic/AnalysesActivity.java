@@ -1,9 +1,6 @@
 package com.polus_plus.fast_medic;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-
-import static androidx.navigation.Navigation.findNavController;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,7 +10,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.polus_plus.fast_medic.Requests.APIs.UserProfile.UpdateProfileSend;
 import com.polus_plus.fast_medic.Requests.JSONPlaceHolderAPI;
 import com.polus_plus.fast_medic.Requests.RetrofitAPI;
-import com.polus_plus.fast_medic.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,7 +24,6 @@ public class AnalysesActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_analyses);
 		
 		BottomNavigationView bottomNavView = findViewById(R.id.bottomNavigationView_analys);
-		NavController controller = findNavController(this, R.id.fragmentContainerView_analys);
 		
 		SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
 		String token = settings.getString("token", "");
