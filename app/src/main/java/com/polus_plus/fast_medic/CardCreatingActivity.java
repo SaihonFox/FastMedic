@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -79,13 +80,12 @@ public class CardCreatingActivity extends AppCompatActivity {
 	
 	public void showDialog() {
 		Calendar calendar = Calendar.getInstance();
-		new DatePickerDialog(getApplicationContext(), (view1, year, month, dayOfMonth) -> {
+		new DatePickerDialog(CardCreatingActivity.this, (view, year, month, day) -> {
 			String date = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
 					.withLocale(new Locale("ru"))
-					.format(LocalDate.of(year, month + 1, dayOfMonth));
+					.format(LocalDate.of(year, month + 1, day));
 			date = date.substring(0, date.length() - 3);
 			birthday.setText(date);
-		}, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
-				.show();
+		}, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
 	}
 }
