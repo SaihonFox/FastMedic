@@ -121,7 +121,7 @@
         tools:ignore="LabelFor,RtlHardcoded,RtlSymmetry,VisualLintTextFieldSize,TextContrastCheck" />
 
     <EditText
-        android:id="@+id/lastnameEditText_cc"
+        android:id="@+id/patronymicEditText_cc"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="72dp"
@@ -140,7 +140,7 @@
         tools:ignore="LabelFor,RtlHardcoded,RtlSymmetry,TextContrastCheck,VisualLintTextFieldSize" />
 
     <EditText
-        android:id="@+id/patronymicEditText_cc"
+        android:id="@+id/lastnameEditText_cc"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="144dp"
@@ -186,7 +186,8 @@
         app:layout_constraintEnd_toEndOf="@id/inputsView_cc"
         app:layout_constraintStart_toStartOf="@id/inputsView_cc"
         app:layout_constraintTop_toTopOf="@id/inputsView_cc"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/imageView4"

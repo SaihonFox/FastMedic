@@ -24,8 +24,12 @@ public class MainActivity extends AppCompatActivity {
 			public void run() {
 				if(!Data.isLoggedIn)
 					startActivity(new Intent().setClass(getApplicationContext(), OnboardActivity.class));
-				else
-					startActivity(new Intent().setClass(getApplicationContext(), PasswordCreatingActivity.class));
+				else {
+					if (Data.password.length() == 4 && Data.)
+						startActivity(new Intent().setClass(getApplicationContext(), PasswordCreatingActivity.class));
+					else
+					
+				}
 				finish();
 			}
 		};

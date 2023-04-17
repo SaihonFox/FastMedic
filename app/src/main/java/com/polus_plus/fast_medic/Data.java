@@ -4,6 +4,6 @@ public class Data {
 	public static String token = "";
 	public static boolean isLoggedIn = false;
 	public static String email = "";
-	
 	public static String password = "";
+	
 }
