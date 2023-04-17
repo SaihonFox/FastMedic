@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import java.util.Map;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -46,5 +48,7 @@ public class MainActivity extends AppCompatActivity {
 			Data.email = settings.getString("email", "");
 		if(settings.contains("password"))
 			Data.password = settings.getString("password", "");
+		if(settings.contains("userCard"))
+			Data.userCard = settings.getStringSet("userCard", Set.of("", "", "", "", ""));
 	}
 }
