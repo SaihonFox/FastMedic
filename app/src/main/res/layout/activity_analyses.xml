@@ -11,7 +11,7 @@
         android:id="@+id/bottomNavigationView_analyses"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        android:background="@color/white"
+        android:background="@drawable/item_selected_bnv"
         app:itemTextColor="#1A6FEE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

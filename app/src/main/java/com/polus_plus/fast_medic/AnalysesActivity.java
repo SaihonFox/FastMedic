@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -36,8 +40,20 @@ public class AnalysesActivity extends AppCompatActivity {
 		BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView_analyses);
 		
 		bottomNavigationView.setOnItemSelectedListener((NavigationBarView.OnItemSelectedListener) item -> {
+			switch (item.getItemId()) {
+				case R.id.analysesFragment:
+					item.getIcon().setColorFilter(Color.parseColor("#1A6FEE"), PorterDuff.Mode.SRC_ATOP);
+					break;
+				case R.id.resultsFragment:
+					item.getIcon().setColorFilter(Color.parseColor("#1A6FEE"), PorterDuff.Mode.SRC_ATOP);
+					break;
+				case R.id.supportFragment:
+					break;
+				case R.id.profileFragment:
+					break;
+			}
 			
-			return false;
+			return true;
 		});
 		
 		SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
