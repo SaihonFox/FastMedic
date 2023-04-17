@@ -1,6 +1,9 @@
 package com.polus_plus.fast_medic;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -24,6 +27,24 @@ public class AnalysesActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_analyses);
 		
 		BottomNavigationView bottomNavView = findViewById(R.id.bottomNavigationView_analys);
+		bottomNavView.setOnItemSelectedListener(item -> {
+			switch (item.getItemId()) {
+				case R.id.analysesFragment:
+					replaceFragment(new AnalysesFragment());
+					break;
+				case R.id.resultsFragment:
+					replaceFragment(new ResultsFragment());
+					break;
+				case R.id.supportFragment:
+					replaceFragment(new SupportFragment());
+					break;
+				case R.id.profileFragment:
+					replaceFragment(new ProfileFragment());
+					break;
+			}
+			
+			return true;
+		});
 		
 		SharedPreferences settings = getSharedPreferences("data", Context.MODE_PRIVATE);
 		String token = settings.getString("token", "");
@@ -66,5 +87,12 @@ public class AnalysesActivity extends AppCompatActivity {
 			@Override
 			public void onFailure(Call<List<Catalog>> call, Throwable t) {}
 		});*/
+	}
+	
+	public void replaceFragment(Fragment fragment) {
+		FragmentManager fragmentManager = getSupportFragmentManager();
+		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+		fragmentTransaction.replace(R.id.fragmentContainerView_analys, fragment);
+		fragmentTransaction.commit();
 	}
 }

@@ -17,6 +17,7 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/fa_input_bg"
         android:importantForAutofill="no"
+        android:paddingStart="42dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -38,9 +39,8 @@
         android:id="@+id/searchTextView_fa"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="42dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="12dp"
         android:layout_marginBottom="4dp"
         android:gravity="center_vertical"
         android:text="Искать анализы"
@@ -48,7 +48,7 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/searchAnalysesEditText_fa"
         app:layout_constraintEnd_toEndOf="@+id/searchAnalysesEditText_fa"
-        app:layout_constraintStart_toEndOf="@id/searchImageView_fa"
+        app:layout_constraintStart_toStartOf="@+id/searchAnalysesEditText_fa"
         app:layout_constraintTop_toTopOf="@+id/searchAnalysesEditText_fa" />
 
     <TextView
