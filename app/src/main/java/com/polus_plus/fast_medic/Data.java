@@ -5,5 +5,5 @@ public class Data {
 	public static boolean isLoggedIn = false;
 	public static String email = "";
 	public static String password = "";
-	public static UserCard userCard = new UserCard();
+	public static UserCard userCard;
 }

@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
 				if(!Data.isLoggedIn)
 					startActivity(new Intent().setClass(getApplicationContext(), OnboardActivity.class));
 				else {
-					if (Data.password.length() == 4 && Data.)
-						startActivity(new Intent().setClass(getApplicationContext(), PasswordCreatingActivity.class));
-					else
-					
+					if (Data.password.length() == 4 && Data.userCard == null)
+						startActivity(new Intent().setClass(getApplicationContext(), CardCreatingActivity.class));
+					else if(Data.userCard != null)
+						startActivity(new Intent().setClass(getApplicationContext(), AnalysesActivity.class));
 				}
 				finish();
 			}
