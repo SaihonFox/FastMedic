@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
+import com.polus_plus.fast_medic.Requests.APIs.Catalog.Catalog;
 import com.polus_plus.fast_medic.Requests.APIs.News.News;
 import com.polus_plus.fast_medic.Requests.RetrofitAPI;
 
@@ -21,17 +22,20 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AnalysesFragment extends Fragment {
-	int count = 0;
+	int newsCount = 0;
+	int catalogCount = 0;
 	List<News> newsList;
+	List<Catalog> catalogList;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		newsRequests();
+		catalogRequests();
 		
 		View view = inflater.inflate(R.layout.fragment_analyses, container, false);
 		
 		ListView cardListView = view.findViewById(R.id.cardListView_fa);
-		cardListView.setAdapter(new CardListViewAdapter());
+		cardListView.setAdapter(new CardListViewAdapter(newsList));
 		
 		return view;
 	}
@@ -45,7 +49,7 @@ public class AnalysesFragment extends Fragment {
 		
 		@Override
 		public int getCount() {
-			return count;
+			return newsCount;
 		}
 		
 		@Override
@@ -74,17 +78,58 @@ public class AnalysesFragment extends Fragment {
 		}
 	}
 	
+	class CatalogAnalysesAdapter extends BaseAdapter {
+		
+		@Override
+		public int getCount() {
+			return catalogCount;
+		}
+		
+		@Override
+		public Object getItem(int position) {
+			return null;
+		}
+		
+		@Override
+		public long getItemId(int position) {
+			return position;
+		}
+		
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			View view = LayoutInflater.from(getContext()).inflate(R.layout.catalogs_category_item, parent, false);
+			
+			return view;
+		}
+	}
+	
 	public void newsRequests() {
 		Call<List<News>> newsCall = RetrofitAPI.api().getNews();
 		newsCall.enqueue(new Callback<>() {
 			@Override
 			public void onResponse(Call<List<News>> call, Response<List<News>> response) {
 				newsList = response.body();
-				count = newsList.size();
+				newsCount = newsList.size();
 			}
 			
 			@Override
 			public void onFailure(Call<List<News>> call, Throwable t) {
+			
+			}
+		});
+	}
+	
+	public void catalogRequests() {
+		Call<List<Catalog>> newsCall = RetrofitAPI.api().getCatalog();
+		newsCall.enqueue(new Callback<>() {
+			@Override
+			public void onResponse(Call<List<Catalog>> call, Response<List<Catalog>> response) {
+				catalogList = response.body();
+				catalogCount = catalogList.size();
+			}
+			
+			@Override
+			public void onFailure(Call<List<Catalog>> call, Throwable t) {
 			
 			}
 		});
