@@ -18,12 +18,20 @@
         android:id="@+id/resultsFragment"
         android:name="com.polus_plus.fast_medic.ResultsFragment"
         android:label="fragment_results"
-        tools:layout="@layout/fragment_results" />
+        tools:layout="@layout/fragment_results" >
+        <action
+            android:id="@+id/action_resultsFragment_to_supportFragment"
+            app:destination="@id/supportFragment" />
+    </fragment>
     <fragment
         android:id="@+id/supportFragment"
         android:name="com.polus_plus.fast_medic.SupportFragment"
         android:label="fragment_support"
-        tools:layout="@layout/fragment_support" />
+        tools:layout="@layout/fragment_support" >
+        <action
+            android:id="@+id/action_supportFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.polus_plus.fast_medic.ProfileFragment"

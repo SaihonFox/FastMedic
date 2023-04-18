@@ -98,17 +98,29 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="HardcodedText,TextContrastCheck" />
 
-    <ListView
-        android:id="@+id/categoriesListView_fa"
+    <HorizontalScrollView
+        android:id="@+id/categoriesHorizontalScrollView_fa"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="368dp"
-        android:orientation="horizontal"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:outlineAmbientShadowColor="@color/transparent"
+        android:outlineSpotShadowColor="@color/transparent"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:id="@+id/categoriesLayout_fa"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
 
     <ListView
         android:id="@+id/cardsListView_fa"
@@ -120,5 +132,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoriesListView_fa" />
+        app:layout_constraintTop_toBottomOf="@id/categoriesHorizontalScrollView_fa" />
 </androidx.constraintlayout.widget.ConstraintLayout>
